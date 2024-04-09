@@ -1,11 +1,17 @@
-name: Demo Workflow
-run-name: Demo Workflow ${{ github.job }}
+name: Github Actions Demo
+run-name: ${{ github.actor }} is learning GitHub Actions
 
-defaults:
-  run:
-    shell: pwsh
-
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron:  '15 6 * * 0'
 
 jobs:
     demo:
