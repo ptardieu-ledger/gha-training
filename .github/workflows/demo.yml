@@ -15,11 +15,13 @@ on:
   workflow_dispatch:
 
 jobs:
-    demo:
+    build:
         name: "Demo job"
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v4 
             - run: |
-                echo YAY!
+                echo ${{ github.event_name }}
+                echo ${{ github.ref_name }}
+                ls -al
